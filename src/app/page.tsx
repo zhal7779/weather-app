@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1>main</h1>
+      <h1>오늘의 날씨</h1>
       <ul>
         <li>
           <Link href="/seoul">서울</Link>
