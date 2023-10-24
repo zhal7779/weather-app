@@ -1,14 +1,26 @@
-import HomeButton from '../components/homeButton';
+import HomeButton from '@/components/homeButton';
+import { getForecast } from '@/utills/getForecast';
 
 type Props = {
   params: {
     location: string;
   };
 };
-export default function detail({ params }: Props) {
+export default async function Detail({ params }: Props) {
+  const location = params.location === 'seoul' ? '서울' : '';
+  const data = await getForecast(params.location);
+  console.log(data);
+
   return (
     <>
-      <h1>{params.location}</h1>
+      <h1>{location}의 일주일 날씨</h1>
+      <ul>
+        {data.forecast.forecastday.map((day) => (
+          <li key={day.date}>
+            {day.date} / {day.day.avgtemp_c}도
+          </li>
+        ))}
+      </ul>
       <HomeButton />
     </>
   );
