@@ -7,7 +7,7 @@ import RevalidateButton from '@/components/revalidateButton';
 export default async function Home() {
   const data = await getCurrentWeather('seoul');
   const time = await getTime(data.location.tz_id);
-
+  console.log(time);
   return (
     <>
       <h1>오늘의 날씨</h1>
