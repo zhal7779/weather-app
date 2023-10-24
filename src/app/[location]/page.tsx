@@ -9,7 +9,6 @@ type Props = {
 export default async function Detail({ params }: Props) {
   const location = params.location === 'seoul' ? '서울' : '';
   const data = await getForecast(params.location);
-  console.log(data);
 
   return (
     <>

@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import './global.css';
 import { getCurrentWeather } from '@/utills/getCurrentWether';
+import { getTime } from '@/utills/getTime';
+import RevalidateButton from '@/components/revalidateButton';
 
 export default async function Home() {
   const data = await getCurrentWeather('seoul');
+  const time = await getTime(data.location.tz_id);
 
   return (
     <>
       <h1>오늘의 날씨</h1>
+      <h2>{time.dateTime}</h2>
       <ul>
         <li>
           <Link href="/seoul">서울</Link>
@@ -23,6 +27,7 @@ export default async function Home() {
           <Link href="/london">런던</Link>
         </li>
       </ul>
+      <RevalidateButton tag={'time'} />
     </>
   );
 }
