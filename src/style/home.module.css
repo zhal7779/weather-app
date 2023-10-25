@@ -1,0 +1,28 @@
+.header {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #66c2ff;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.list > li > a {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
