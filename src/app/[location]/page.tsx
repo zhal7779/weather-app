@@ -19,8 +19,6 @@ export function generateMetadata({ params }: Props) {
 
 export default async function Detail({ params, searchParams }: Props) {
   const data = await getForecast(params.location);
-  console.log(searchParams);
-
   return (
     <>
       <h1>{searchParams.name}의 일주일 날씨</h1>

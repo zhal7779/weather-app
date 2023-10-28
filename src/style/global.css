@@ -17,9 +17,12 @@ a {
 button {
   border: none;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 8px 16px;
+  margin-top: 3rem;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  background-color: #33adff;
+  background-color: #1fa5ff;
   color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

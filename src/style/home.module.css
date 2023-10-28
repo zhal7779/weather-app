@@ -15,10 +15,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  width: 12rem;
+  padding: 1.5rem 0;
   background-color: #66c2ff;
   color: #ffffff;
   border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .list > li > a {
