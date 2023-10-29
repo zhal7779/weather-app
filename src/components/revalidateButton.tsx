@@ -12,7 +12,9 @@ export default function RevalidateButton({ tag }: Props) {
 
     const result = await res.json();
     console.log(result);
+
+    window.location.reload();
   };
 
-  return <button onClick={handleClick}>캐시 비우기</button>;
+  return <button onClick={handleClick}>업데이트</button>;
 }

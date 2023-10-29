@@ -11,11 +11,12 @@ export default async function Home() {
   const nycData = await getCurrentWeather('NYC');
   const londonData = await getCurrentWeather('london');
   const time = await getTime(seoulData.location.tz_id);
+
   return (
     <>
       <header className={Style.header}>오늘의 날씨 ⛅</header>
       <main>
-        <p className={Style.text}>현재 시간 : {time.dateTime}</p>
+        <p className={Style.text}>업데이트 시간 : {time.dateTime}</p>
         <ul className={Style.list}>
           <li>
             <Link href="/seoul?name=서울">서울</Link>

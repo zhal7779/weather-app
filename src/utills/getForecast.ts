@@ -145,7 +145,10 @@ interface Condition3 {
 
 export const getForecast = async (location: string): Promise<Response> => {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7&aqi=no&alerts=no`
+    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7&aqi=no&alerts=no`,
+    {
+      cache: 'no-store',
+    } // 캐싱을 하지 않도록 설정
   );
 
   if (!res.ok) {
