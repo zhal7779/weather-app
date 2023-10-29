@@ -1,4 +1,6 @@
 'use client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
   tag: string;
@@ -16,5 +18,9 @@ export default function RevalidateButton({ tag }: Props) {
     window.location.reload();
   };
 
-  return <button onClick={handleClick}>업데이트</button>;
+  return (
+    <button onClick={handleClick}>
+      <FontAwesomeIcon icon={faRotateRight} />
+    </button>
+  );
 }

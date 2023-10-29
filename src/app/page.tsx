@@ -10,13 +10,18 @@ export default async function Home() {
   const tokyoData = await getCurrentWeather('tokyo');
   const nycData = await getCurrentWeather('NYC');
   const londonData = await getCurrentWeather('london');
-  const time = await getTime(seoulData.location.tz_id);
+
+  const timeData = await getTime(seoulData.location.tz_id);
+  const time = timeData.dateTime.slice(0, -8);
 
   return (
-    <>
+    <div className={Style.wrapper}>
       <header className={Style.header}>오늘의 날씨 ⛅</header>
-      <main>
-        <p className={Style.text}>업데이트 시간 : {time.dateTime}</p>
+      <main className={Style.main}>
+        <section className={Style.update_section}>
+          <p className={Style.text}>업데이트 시간 : {time}</p>
+          <RevalidateButton tag={'time'} />
+        </section>
         <ul className={Style.list}>
           <li>
             <Link href="/seoul?name=서울">서울</Link>
@@ -35,8 +40,7 @@ export default async function Home() {
             <CurrentWeather data={londonData} />
           </li>
         </ul>
-        <RevalidateButton tag={'time'} />
       </main>
-    </>
+    </div>
   );
 }

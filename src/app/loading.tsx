@@ -1,3 +1,15 @@
+import Image from 'next/image';
+
 export default function Loading() {
-  return <>로딩중.....</>;
+  return (
+    <>
+      <Image
+        src="/loading-spinner.gif"
+        alt="loading"
+        width={100}
+        height={100}
+      />
+      ;
+    </>
+  );
 }
