@@ -1,17 +1,28 @@
 import Link from 'next/link';
-import { getCurrentWeather } from '@/utills/getCurrentWether';
 import { getTime } from '@/utills/getTime';
 import RevalidateButton from '@/components/revalidateButton';
 import Style from '../style/home.module.css';
 import CurrentWeather from '@/components/currentWeather';
+import { getForecast } from '@/utills/getForecast';
+
+const getWeather = async (location: string, day: number) => {
+  const res = await getForecast(location, day);
+
+  return {
+    condition: res.current.condition.text,
+    temp: res.current.temp_c,
+    maxTemp: res.forecast.forecastday[0].day.maxtemp_c,
+    minTemp: res.forecast.forecastday[0].day.mintemp_c,
+  };
+};
 
 export default async function Home() {
-  const seoulData = await getCurrentWeather('seoul');
-  const tokyoData = await getCurrentWeather('tokyo');
-  const nycData = await getCurrentWeather('NYC');
-  const londonData = await getCurrentWeather('london');
+  const seoulData = await getWeather('seoul', 1);
+  const tokyoData = await getWeather('tokyo', 1);
+  const nycData = await getWeather('NYC', 1);
+  const londonData = await getWeather('london', 1);
 
-  const timeData = await getTime(seoulData.location.tz_id);
+  const timeData = await getTime('Asia/Seoul');
   const time = timeData.dateTime.slice(0, -8);
 
   return (

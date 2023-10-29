@@ -1,20 +1,22 @@
-'use client';
-import React from 'react';
-
+import Style from '../style/home.module.css';
 type Props = {
   data: {
-    current: {
-      condition: { text: string };
-      temp_c: number;
-    };
+    condition: string;
+    temp: number;
+    maxTemp: number;
+    minTemp: number;
   };
 };
 
 const CurrentWeather = ({ data }: Props) => {
   return (
     <>
-      <span>{data.current.condition.text}</span>
-      <span>{data.current.temp_c}℃</span>
+      <span>{data.condition}</span>
+      <span className={Style.currentTemp}>{data.temp}℃</span>
+      <div className={Style.temp}>
+        <p>최저: {data.minTemp}℃</p>
+        <p>최고: {data.maxTemp}℃</p>
+      </div>
     </>
   );
 };

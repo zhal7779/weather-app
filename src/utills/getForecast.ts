@@ -1,6 +1,6 @@
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-interface Response {
+export interface Response {
   location: Location;
   current: Current;
   forecast: Forecast;
@@ -143,9 +143,12 @@ interface Condition3 {
   code: number;
 }
 
-export const getForecast = async (location: string): Promise<Response> => {
+export const getForecast = async (
+  location: string,
+  day: number
+): Promise<Response> => {
   const res = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=7&aqi=no&alerts=no`,
+    `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=${day}&aqi=no&alerts=no`,
     {
       cache: 'no-store',
     } // 캐싱을 하지 않도록 설정
@@ -154,5 +157,6 @@ export const getForecast = async (location: string): Promise<Response> => {
   if (!res.ok) {
     if (!res.ok) throw new Error('날씨 정보를 가져올 수 없습니다.');
   }
+
   return res.json();
 };
